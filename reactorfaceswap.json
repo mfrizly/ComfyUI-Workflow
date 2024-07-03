@@ -1,0 +1,263 @@
+{
+  "last_node_id": 6,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        89,
+        91
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ],
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_00777_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        -10,
+        499
+      ],
+      "size": [
+        315,
+        314.0000305175781
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ],
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "image.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SaveImage",
+      "pos": [
+        1189.0500000000002,
+        396.24000000000007
+      ],
+      "size": [
+        315,
+        269.99999046325684
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "kan"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "ReActorFaceSwap",
+      "pos": [
+        688.11,
+        343.00000000000006
+      ],
+      "size": {
+        "0": 315,
+        "1": 358
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "type": "IMAGE",
+          "link": 2,
+          "slot_index": 0
+        },
+        {
+          "name": "source_image",
+          "type": "IMAGE",
+          "link": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "face_model",
+          "type": "FACE_MODEL",
+          "link": null
+        },
+        {
+          "name": "face_boost",
+          "type": "FACE_BOOST",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "FACE_MODEL",
+          "type": "FACE_MODEL",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReActorFaceSwap"
+      },
+      "widgets_values": [
+        true,
+        "inswapper_128.onnx",
+        "YOLOv5l",
+        "none",
+        1,
+        0.5,
+        "no",
+        "no",
+        "0",
+        "0",
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "ReActorFaceBoost",
+      "pos": [
+        97,
+        602
+      ],
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FACE_BOOST",
+          "type": "FACE_BOOST",
+          "links": [
+            5
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReActorFaceBoost"
+      },
+      "widgets_values": [
+        true,
+        "codeformer-v0.1.0.pth",
+        "Bilinear",
+        1,
+        0.5,
+        false
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      3,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      4,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      4,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      6,
+      0,
+      1,
+      3,
+      "FACE_BOOST"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.2100000000000009,
+      "offset": [
+        -22.314783677481678,
+        -88.49022258030757
+      ]
+    }
+  },
+  "version": 0.4
+}
